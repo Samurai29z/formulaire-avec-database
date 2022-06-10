@@ -1,11 +1,13 @@
-<!DOCTYPE html>
+<html>
+  <head>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Document</title>
+  <title>Document</title> -->
 
   <style>
     .img{
@@ -18,21 +20,8 @@
 <body>
 <form action="delete.php" method="GET">
 <?php
+require_once('connect.php');
 
-// connection a la base de donnee
-$host = "localhost";
-$dbname = "message_db";
-$username = "root";
-$password = "";
-
-$conn = mysqli_connect( $host,
-                        $username,
-                        $password,
-                        $dbname);
-
-if (mysqli_connect_errno()) {
-    die("connection error: " .mysqli_connect_error());
-}
 // afficher les donnees de la base                       
 
 $sql = "SELECT id, name, body, priority, type FROM message";
@@ -65,7 +54,7 @@ if ($result->num_rows > 0) {
      </a>
     </td>
    <td>
-     <a  href="/phpmysql/form.php">
+     <a  href="modifipage.php?upd=<?php echo $row["id"]?>">
        <img class="img" src="edit.png" alt="" srcset="">
       </a>
     </td>
